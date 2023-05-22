@@ -103,8 +103,8 @@ with gr.Blocks() as demo:
         with gr.Column(scale=1):
             emptyBtn = gr.Button("Clear History")
             max_length = gr.Slider(0, 4096, value=2048, step=1.0, label="Maximum length", interactive=True)
-            top_p = gr.Slider(0, 1, value=0.7, step=0.01, label="Top P", interactive=True)
-            temperature = gr.Slider(0, 1, value=0.95, step=0.01, label="Temperature", interactive=True)
+            top_p = gr.Slider(0, 1, value=0.1, step=0.01, label="Top P", interactive=True)
+            temperature = gr.Slider(0, 1, value=0.1, step=0.01, label="Temperature", interactive=True)
 
     history = gr.State([])
 
@@ -158,7 +158,7 @@ def main():
         model.transformer.prefix_encoder.float().cuda()
     
     model = model.eval()
-    demo.queue().launch(share=False, inbrowser=True)
+    demo.queue().launch(share=False, inbrowser=True, server_port=27777, server_name='0.0.0.0')
 
 
 
