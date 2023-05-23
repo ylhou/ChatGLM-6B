@@ -153,6 +153,7 @@ from transformers.utils import (
     logging,
 )
 from transformers.utils.generic import ContextManagers
+from tensorboardX import SummaryWriter
 
 
 _is_native_cpu_amp_available = is_torch_greater_or_equal_than_1_10
@@ -210,6 +211,7 @@ if TYPE_CHECKING:
 
 logger = logging.get_logger(__name__)
 
+writer = SummaryWriter()
 
 # Name of the files used for checkpointing
 TRAINING_ARGS_NAME = "training_args.bin"
@@ -2218,6 +2220,11 @@ class Trainer:
 
             logs["loss"] = round(tr_loss_scalar / (self.state.global_step - self._globalstep_last_logged), 4)
             logs["learning_rate"] = self._get_learning_rate()
+
+            l = logs["loss"]
+            s = self.state.global_step
+            logger.info(f"loss: {l}  step: {s}")
+            writer.add_scalar('training loss', l, global_step=s)
 
             self._total_loss_scalar += tr_loss_scalar
             self._globalstep_last_logged = self.state.global_step

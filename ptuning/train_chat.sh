@@ -1,8 +1,8 @@
-PRE_SEQ_LEN=128
+PRE_SEQ_LEN=256
 LR=1e-2
 CHAT_TRAIN_DATA=train.json
 CHAT_VAL_DATA=val.json
-SOURCE_LEN=64
+SOURCE_LEN=32
 TARGET_LEN=512
 CHECKPOINT_NAME=output/kefu-$PRE_SEQ_LEN-$LR-$SOURCE_LEN-$TARGET_LEN\
 
@@ -14,7 +14,7 @@ CUDA_VISIBLE_DEVICES=0 python3 main.py \
     --response_column response \
     --history_column history \
     --overwrite_cache \
-    --model_name_or_path /home/user/imported_models/chatglm-6b-20230514 \
+    --model_name_or_path /home/user/imported_models/chatglm-6b \
     --output_dir $CHECKPOINT_NAME \
     --overwrite_output_dir \
     --max_source_length $SOURCE_LEN \
@@ -23,7 +23,7 @@ CUDA_VISIBLE_DEVICES=0 python3 main.py \
     --per_device_eval_batch_size 1 \
     --gradient_accumulation_steps 16 \
     --predict_with_generate True\
-    --max_steps 10000 \
+    --max_steps 8000 \
     --logging_steps 10 \
     --save_steps 500 \
     --learning_rate $LR \
