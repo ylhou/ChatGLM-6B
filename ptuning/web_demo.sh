@@ -1,6 +1,6 @@
 PRE_SEQ_LEN=256
-MODEL=/home/user/imported_models/chatglm-6b
-CHECKPOINT=output/kefu-256-1e-2-32-512/checkpoint-7000
+MODEL=/home/user/imported_models/chatglm-6b-20230419
+CHECKPOINT=output/kefu-256-1e-2-32-512/checkpoint-7500
 CUDA_VISIBLE_DEVICES=0 python3 web_demo.py \
     --model_name_or_path $MODEL \
     --ptuning_checkpoint $CHECKPOINT \

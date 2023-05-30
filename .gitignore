@@ -132,3 +132,14 @@ dmypy.json
 # Mac system file
 model/
 .idea
+
+# checkpoints
+output/
+
+# tensorboard files
+runs/
+runs.*
+
+#data
+train.json
+val.json

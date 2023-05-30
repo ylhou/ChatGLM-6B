@@ -14,7 +14,7 @@ CUDA_VISIBLE_DEVICES=0 python3 main.py \
     --response_column response \
     --history_column history \
     --overwrite_cache \
-    --model_name_or_path /home/user/imported_models/chatglm-6b \
+    --model_name_or_path /home/user/imported_models/chatglm-6b-20230419 \
     --output_dir $CHECKPOINT_NAME \
     --overwrite_output_dir \
     --max_source_length $SOURCE_LEN \
